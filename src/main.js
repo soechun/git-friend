@@ -3,6 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import BootstrapVue from 'bootstrap-vue'
+import VueResource from 'vue-resource'
+
+Vue.use(VueResource)
+Vue.use(BootstrapVue)
 
 Vue.config.productionTip = false
 
