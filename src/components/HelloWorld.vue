@@ -4,10 +4,11 @@
     <b-btn @click="findFriends" variant="info" class="m-1">
       Find Friends
     </b-btn>
-    {{followers}}
     <br/>
     <br/>
-    {{following}}
+    <div v-for="friend in friends">
+      {{friend.login}}
+    </div>
   </div>
 </template>
 
@@ -20,7 +21,8 @@ export default {
       username: 0,
       result: '',
       followers: '',
-      following: ''
+      following: '',
+      friends: []
     }
   },
   methods: {
@@ -29,7 +31,16 @@ export default {
     },
     matchFriends (followers, following) {
       console.log('Finding Friends')
-      return 0
+      var followersHash = {}
+      for (var i = 0; i < followers.length; i++) {
+        followersHash[followers[i].login] = followers[i]
+      }
+      var friends = following.filter(function (each) {
+        if (followersHash[each.login]) {
+          return true
+        }
+      }, followersHash)
+      return friends
     },
     async findFriends () {
       const baseURL = 'https://api.github.com/users/'
@@ -39,7 +50,7 @@ export default {
       let followers = await this.$http.get(baseURL + this.username + followersAppend)
       this.followers = followers.data
       this.following = following.data
-      this.matchFriends(this.followers, this.following)
+      this.friends = this.matchFriends(this.followers, this.following)
     }
   }
 }
