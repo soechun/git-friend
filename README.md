@@ -48,3 +48,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## Adding support for JENKINS
 - Jenkins is added on port 8082
+- Whenever master branch is pushed, it will trigger a build
