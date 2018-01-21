@@ -11,8 +11,19 @@ module.exports = function karmaConfig (config) {
     // 1. install corresponding karma launcher
     //    http://karma-runner.github.io/0.13/config/browsers.html
     // 2. add it to the `browsers` array below.
-    browsers: ['PhantomJS'],
-    frameworks: ['mocha', 'sinon-chai', 'phantomjs-shim'],
+    browsers: ['Chrome'],
+    frameworks: ['mocha', 'sinon-chai','phantomjs-shim'],
+    plugins: [
+      require('karma-mocha'), 
+      require('karma-webpack'), 
+      require('karma-sourcemap-loader'),
+      require('karma-sinon-chai'),
+      require('karma-phantomjs-shim'),
+      require('karma-spec-reporter'),
+      require('karma-coverage'),
+      require('karma-phantomjs-launcher'),
+      require('karma-chrome-launcher')
+    ],
     reporters: ['spec', 'coverage'],
     files: ['./index.js'],
     preprocessors: {
