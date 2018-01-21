@@ -80,6 +80,7 @@ export default {
     // main function to request api call and find out your git friends
     async findFriends () {
       this.reset()
+
       // Check if username belongs to github
       if (!this.validUsername(this.username)) {
         this.error = true
@@ -106,7 +107,7 @@ export default {
       this.friends = this.matchFriends(followers.data, following.data)
       if (this.friends.length < 1) {
         this.error = true
-        this.errorMessage = 'Sorry to hear that you have no friend. add me @soechun'
+        this.errorMessage = 'Sorry to hear that you have no friend. Add me @soechun'
       }
       this.loading = false
     }
