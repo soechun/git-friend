@@ -10,6 +10,7 @@
       <div>{{errorMessage}}</div>
     </div>
     <div v-else-if="friends.length > 0" id="friend-list">
+      <div>Your git friends are ...</div>
       <div v-for="friend in friends"
       :key="friend.login">
         {{friend.login}}
@@ -53,9 +54,11 @@ export default {
       }, followersHash)
       return friends
     },
+    // check if username is valid github username
     validUsername (username) {
       return githubUsernameRegex.test(username)
     },
+    // check if github user exists
     async checkUserExists (username) {
       try {
         let user = await this.$http.get(this.githubURL + this.username)
@@ -67,12 +70,16 @@ export default {
         return false
       }
     },
-    // main function to request api call and find out your git friends
-    async findFriends () {
+    // reset the data
+    reset () {
       this.error = false
       this.errorMessage = ''
       this.loading = true
-
+      this.friends = []
+    },
+    // main function to request api call and find out your git friends
+    async findFriends () {
+      this.reset()
       // Check if username belongs to github
       if (!this.validUsername(this.username)) {
         this.error = true
