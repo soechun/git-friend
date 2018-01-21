@@ -47,4 +47,4 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 `pm2 start npm`
 
 ## Adding support for JENKINS
-- Jenkins is added on port 8081
+- Jenkins is added on port 8082
