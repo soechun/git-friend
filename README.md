@@ -45,3 +45,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 `npm install pm2`
 - Run the application
 `pm2 start npm`
+
+## Adding support for JENKINS
