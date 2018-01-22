@@ -47,7 +47,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 `pm2 start npm`
 
 ## Adding support for JENKINS (In Development)
-- Jenkins is added on port 8082
+- Jenkins is added on port 8083
 - Whenever master branch is pushed, it will trigger a build
 - It will pull the latest code and reload the server
 - it will stop the pm2 first
