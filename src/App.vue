@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <h1>Friends of Git Town</h1>
     <h2>Find your git friends here</h2>
     <img src="./assets/logo.png" class="title-img">
     <router-view/>
